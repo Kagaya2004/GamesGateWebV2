@@ -2,11 +2,11 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
-class Desenvolvedora extends Model
+class Desenvolvedora extends Authenticatable
 {
     use HasFactory, SoftDeletes;
 
@@ -25,6 +25,7 @@ class Desenvolvedora extends Model
         'descricao',
         'pais',
         'email',
+        'senha',
         'site',
     ];
 
@@ -34,9 +35,13 @@ class Desenvolvedora extends Model
      * @var list<string>
      */
     protected $hidden = [
-        "created_at",
-        "updated_at",
-        "deleted_at",
+        'email_verified_at',
+        'password',
+        'remember_token',
+        'last_login',
+        'updated_at',
+        'create_at',
+        'deleted_at',
     ];
 
     /**

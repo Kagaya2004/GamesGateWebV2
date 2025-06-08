@@ -9,11 +9,11 @@ class Analise extends Model
     // Conecta com outros modelos
     public function User()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'user_id');
     }
     public function Jogo()
     {
-        return $this->belongsTo(Jogo::class);
+        return $this->belongsTo(Jogo::class, 'jogo_id');
     }
     
     /**
