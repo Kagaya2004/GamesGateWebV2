@@ -11,10 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('genero_do_jogos', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
-            $table->softdeletes();
+        Schema::table('jogos_na_biblioteca', function(Blueprint $table){
+            $table->foreignId('jogo_id')
+                ->contrained('jogos')
+                ->onDelete('cascade');
+            $table->foreignId('biblioeca_id')
+                ->contrained('bibliotecas')
+                ->onDelete('cascade');
         });
     }
 
@@ -23,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('genero_do_jogos');
+        //
     }
 };
