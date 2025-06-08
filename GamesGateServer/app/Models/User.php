@@ -12,15 +12,29 @@ class User extends Authenticatable
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
 
+    // Conexões com outros modelos
+    public function Biblioteca()
+    {
+        return $this->hasMany(Biblioteca::class);
+    }
+    public function Avaliacao()
+    {
+        return $this->hasMany(Avaliacao::class);
+    }
+
     /**
      * The attributes that are mass assignable.
      *
      * @var list<string>
      */
     protected $fillable = [
-        'name',
+        'nome',
         'email',
-        'password',
+        'senha',
+        'apelido',
+        'dataNascimento',
+        'descricao',
+        'status',
     ];
 
     /**
@@ -29,8 +43,13 @@ class User extends Authenticatable
      * @var list<string>
      */
     protected $hidden = [
+        'email_verified_at',
         'password',
         'remember_token',
+        'last_login',
+        'updated_at',
+        'create_at',
+        'deleted_at',
     ];
 
     /**
