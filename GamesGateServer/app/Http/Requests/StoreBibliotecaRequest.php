@@ -23,7 +23,7 @@ class StoreBibliotecaRequest extends FormRequest
     {
         return [
             'quantidadeJogos' => 'required|integer',
-            'user_id' => 'required|integer|exists:user,id',
+            'user_id' => 'required|integer|exists:users,id',
         ];
     }
     public function messages()

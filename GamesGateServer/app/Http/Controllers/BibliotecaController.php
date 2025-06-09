@@ -60,22 +60,14 @@ class BibliotecaController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreBibliotecaRequest $request): RedirectResponse
+    public function store(StoreBibliotecaRequest $request)
     {
         $validator = $request->validated();
 
-        if ($validator->fails()) {
-
-            return response()->json([
-                'message'=>"Erro nas informações da Biblioteca",
-                'status'=>404,
-                'errors'=>$validator->errors()
-            ],404);
-        }
-
         $data = Biblioteca::create($request->all());
+        $data->save();
         return response()->json([
-            'message'=>'Biblioteca criada com sucesso',
+            'message'=>'Biblioteca cadastrado com sucesso',
             'status'=>200,
             'data'=>$data
         ],200);

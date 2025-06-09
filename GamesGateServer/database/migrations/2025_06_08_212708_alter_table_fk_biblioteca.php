@@ -15,9 +15,6 @@ return new class extends Migration
             $table->foreignId('user_id')
                 ->contrained('users')
                 ->onDelete('cascade');
-            $table->foreignId('jogo_id')
-                ->contrained('jogos')
-                ->onDelete('cascade');
         });
     }
 

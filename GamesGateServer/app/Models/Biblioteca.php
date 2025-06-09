@@ -14,10 +14,6 @@ class Biblioteca extends Model
     {
         return $this->belongTo(User::class);
     }
-    public function Jogos() 
-    {
-        return $this->hasMany(Jogo::class);
-    }
 
     /**
      * The attributes that are mass assignable.
@@ -26,6 +22,7 @@ class Biblioteca extends Model
      */
     protected $fillable = [
         'quantidadeJogos',
+        'user_id',
     ];
 
     /**
