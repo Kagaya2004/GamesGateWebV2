@@ -25,6 +25,8 @@ class GeneroDoJogo extends Model
      * @var list<string>
      */
     protected $fillable = [
+        'jogo_id',
+        'genero_id',
     ];
 
     /**

@@ -65,8 +65,8 @@ class GeneroDoJogoController extends Controller
         $validator = $request->validated();
 
         $data = GeneroDoJogo::create([
-            'categoria_id' => $request->categoria_id,
-            'comunidade_id' => $request->comunidade_id,
+            'jogo_id' => $request->jogo_id,
+            'genero_id' => $request->genero_id,
         ]);
 
         return response()->json([

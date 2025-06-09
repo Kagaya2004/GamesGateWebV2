@@ -22,8 +22,8 @@ class UpdateGeneroDoJogoRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'genero_id' => 'required|integer|exists:generos,id',
-            'jogo_id' => 'required|integer|exists:jogos,id',
+            'genero_id' => 'integer|exists:generos,id',
+            'jogo_id' => 'integer|exists:jogos,id',
         ];
     }
     public function messages()

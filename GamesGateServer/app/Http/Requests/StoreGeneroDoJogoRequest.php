@@ -22,8 +22,8 @@ class StoreGeneroDoJogoRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'genero_id' => 'required|integer|exists:genero,id',
-            'jogo_id' => 'required|integer|exists:jogo,id',
+            'genero_id' => 'required|integer|exists:generos,id',
+            'jogo_id' => 'required|integer|exists:jogos,id',
         ];
     }
     public function messages()
