@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreuserDajogoRequest extends FormRequest
+class StoreAnaliseRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,8 +22,8 @@ class StoreuserDajogoRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'user_id' => 'required|integer|exists:user,id',
-            'jogo_id' => 'required|integer|exists:jogo,id',
+            'user_id' => 'required|integer|exists:users,id',
+            'jogo_id' => 'required|integer|exists:jogos,id',
         ];
     }
     public function messages()

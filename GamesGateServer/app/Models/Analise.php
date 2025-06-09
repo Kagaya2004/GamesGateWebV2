@@ -25,6 +25,8 @@ class Analise extends Model
     protected $fillable = [
         'titulo',
         'curtidas',
+        'user_id',
+        'jogo_id',
     ];
 
     /**
