@@ -15,10 +15,6 @@ class Jogo extends Model
     {
         return $this->belongsTo(Desenvolvedora::class, 'desenvolvedora_id');
     }
-    public function Generos()
-    {
-        return $this->hasMany(Genero::class);
-    }
 
     /**
      * The attributes that are mass assignable.
