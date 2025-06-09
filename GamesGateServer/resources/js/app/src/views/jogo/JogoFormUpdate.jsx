@@ -42,7 +42,7 @@ function JogoFormUpdate() {
     <Fragment>
       <div className='display'>
         <div className='card animated fadeInDown'>
-          {jogo.id && <h1>Exclusão de Jogo: {jogo.nome}  </h1>}
+          {jogo.id && <h1>Atualização de Jogo: {jogo.nome}  </h1>}
         </div>
 
         <form onSubmit={(e)=>OnSubmit(e)}>

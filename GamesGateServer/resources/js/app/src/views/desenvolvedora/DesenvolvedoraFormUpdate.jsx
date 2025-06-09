@@ -44,7 +44,7 @@ function DesenvolvedoraFormUpdate() {
     <Fragment>
       <div className='display'>
         <div className='card animated fadeInDown'>
-          {desenvolvedora.id && <h1>Exclusão de Desenvolvedora: {desenvolvedora.nome}  </h1>}
+          {desenvolvedora.id && <h1>Atualização de Desenvolvedora: {desenvolvedora.nome}  </h1>}
         </div>
 
         <form onSubmit={(e)=>OnSubmit(e)}>

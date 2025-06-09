@@ -46,7 +46,7 @@ function UserFormUpdate() {
     <Fragment>
       <div className='display'>
         <div className='card animated fadeInDown'>
-          {user.id && <h1>Exclusão de usuário: {user.nome}  </h1>}
+          {user.id && <h1>Atualização de usuário: {user.nome}  </h1>}
         </div>
 
         <form onSubmit={(e)=>OnSubmit(e)}>

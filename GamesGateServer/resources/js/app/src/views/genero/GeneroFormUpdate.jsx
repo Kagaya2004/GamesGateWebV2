@@ -41,7 +41,7 @@ function GeneroFormUpdate() {
     <Fragment>
       <div className='display'>
         <div className='card animated fadeInDown'>
-          {genero.id && <h1>Exclusão de Gênero: {genero.nome}  </h1>}
+          {genero.id && <h1>Atualização de Gênero: {genero.nome}  </h1>}
         </div>
 
         <form onSubmit={(e)=>OnSubmit(e)}>
