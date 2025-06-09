@@ -12,7 +12,7 @@ use App\Http\Requests\UpdateUserRequest;
 use App\Http\Requests\StoreUserRequest;
 use Illuminate\Http\RedirectResponse;
 
-class UsuarioController extends Controller
+class UserController extends Controller
 {
     public function index(Request $request)
     {
@@ -57,7 +57,7 @@ class UsuarioController extends Controller
 
         $data = User::create($request->all());
 
-        $data->password = Hash::make($request->password);
+        $data->senha = Hash::make($request->senha);
         $data->save();
         return response()->json([
             'message'=>'Usuário cadastrado com sucesso',
