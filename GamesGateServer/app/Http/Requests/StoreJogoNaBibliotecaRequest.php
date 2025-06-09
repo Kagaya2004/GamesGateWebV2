@@ -22,8 +22,8 @@ class StoreJogoNaBibliotecaRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'biblioteca_id' => 'required|integer|exists:biblioteca,id',
-            'jogo_id' => 'required|integer|exists:jogo,id',
+            'biblioteca_id' => 'required|integer|exists:bibliotecas,id',
+            'jogo_id' => 'required|integer|exists:jogos,id',
         ];
     }
     public function messages()

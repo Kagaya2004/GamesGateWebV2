@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateGeneroDoJogoRequest extends FormRequest
+class UpdateJogoNaBibliotecaRequest extends FormRequest
 {
     /**
      * Determine if the genero is authorized to make this request.
