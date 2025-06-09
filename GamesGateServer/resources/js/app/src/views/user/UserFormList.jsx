@@ -64,7 +64,7 @@ function UserFormList() {
 
                     <td>{user.email}</td>
 
-                    <td>{user.dataLancamento}</td>
+                    <td>{user.dataNascimento}</td>
 
                     <td>{user.descricao}</td>
 
