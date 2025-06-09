@@ -57,7 +57,7 @@ function UserFormUpdate() {
               placeholder="Nome Completo"
               onChange={
                   e => setUser({
-                      ...user, name: e.target.value
+                      ...user, nome: e.target.value
                   })
               }
           />
