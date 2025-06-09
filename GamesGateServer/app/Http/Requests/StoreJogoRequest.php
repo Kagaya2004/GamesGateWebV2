@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StorePostRequest extends FormRequest
+class StoreJogoRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,7 +25,7 @@ class StorePostRequest extends FormRequest
             'nome' => 'required|string|max:255|unique:jogos,nome',
             'descricao' => 'required|string',
             'dataLancamento' => 'required|date',
-            'desenvolvedora_id' => 'required|integer|exists:desenvolvedora,id',
+            'desenvolvedora_id' => 'required|integer|exists:desenvolvedoras,id',
         ];
     }
     public function messages()

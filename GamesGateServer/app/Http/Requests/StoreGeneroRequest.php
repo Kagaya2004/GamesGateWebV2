@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreFollowRequest extends FormRequest
+class StoreGeneroRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,6 +23,7 @@ class StoreFollowRequest extends FormRequest
     {
         return [
             'nome' => 'required|string|max:255|unique:generos,nome',
+            'descricao' => 'required|string:',
         ];
     }
     function messages()
