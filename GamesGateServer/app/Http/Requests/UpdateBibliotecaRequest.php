@@ -23,7 +23,7 @@ class UpdateBibliotecaRequest extends FormRequest
     {
         return [
             'quantidadeJogos' => 'integer',
-            'user_id' => 'exists:users,id' .$id,
+            'user_id' => 'exists:users,id',
         ];
     }
     public function messages()

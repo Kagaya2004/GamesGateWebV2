@@ -21,9 +21,10 @@ class UpdateComunidadeRequest extends FormRequest
      */
     public function rules(): array
     {
+        $id = $this->route('id');
         return [
             'nome' => 'required|string|max:255|unique:jogos,nome' .$id,
-            'desenvolvedora_id' => 'required|integer|exists:desenvolvedoras,id' .$id,
+            'desenvolvedora_id' => 'required|integer|exists:desenvolvedoras,id',
             'dataLancamento' => 'date|date_format:Y-m-d',
         ];
     }

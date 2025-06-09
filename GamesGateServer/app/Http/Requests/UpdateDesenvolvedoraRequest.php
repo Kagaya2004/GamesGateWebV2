@@ -21,6 +21,8 @@ class UpdateDesenvolvedoraRequest extends FormRequest
      */
     public function rules(): array
     {
+        $id = $this->route('id');
+        
         return [
             'nome' => 'string|max:255|unique:desenvolvedoras,nome,' . $id,
             'email' => 'email|max:255|unique:desenvolvedoras,email,' . $id,
