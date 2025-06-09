@@ -9,9 +9,9 @@ function UserFormStore() {
         id: null,
         nome: '',
         apelido: '',
-        dataLancamento: new Date().toISOString().split('T')[0],
+        dataNascimento: new Date().toISOString().split('T')[0],
         email: '',
-        password: '',
+        senha: '',
         descricao: '',
         status: '',
     });
