@@ -17,9 +17,8 @@ return new class extends Migration
             $table->string('nome');
             $table->string('pais');
             $table->string('email')->unique();
-            $table->date('site')->nullable();
+            $table->string('site')->nullable();
             $table->string('senha');
-            $table->string('status')->nullable();
             $table->string('descricao')->nullable();
             $table->timestamp('last_login')->nullable();
             $table->timestamp('email_verified_at')->nullable();
