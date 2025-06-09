@@ -9,47 +9,59 @@ import UpdatePassword from '../views/Login/UpdatePassword'
 import Layout from './Layout'
 import Dashboard from '../components/Dashboard'
 
-import UserFormList from '../views/user/UserFormList.jsx'
+import UserFormList from '../views/user/UserFormList'
 import UserFormStore from '../views/user/UserFormStore'
 import UserFormUpdate from '../views/user/UserFormUpdate'
 import UserFormShow from '../views/user/UserFormShow'
 import UserFormDestroy from '../views/user/UserFormDestroy'
 
-import ComunidadeFormList from '../views/comunidade/ComunidadeFormList'
-import ComunidadeFormStore from '../views/comunidade/ComunidadeFormStore'
-import ComunidadeFormUpdate from '../views/comunidade/ComunidadeFormUpdate'
-import ComunidadeFormShow from '../views/comunidade/ComunidadeFormShow'
-import ComunidadeFormDestroy from '../views/comunidade/ComunidadeFormDestroy'
+import AnaliseFormList from '../views/analise/AnaliseFormList'
+import AnaliseFormStore from '../views/analise/AnaliseFormStore'
+import AnaliseFormUpdate from '../views/analise/AnaliseFormUpdate'
+import AnaliseFormShow from '../views/analise/AnaliseFormShow'
+import AnaliseFormDestroy from '../views/analise/AnaliseFormDestroy'
 
-import CategoriaFormList from '../views/categoria/CategoriaFormList'
-import CategoriaFormStore from '../views/categoria/CategoriaFormStore'
-import CategoriaFormUpdate from '../views/categoria/CategoriaFormUpdate'
-import CategoriaFormShow from '../views/categoria/CategoriaFormShow'
-import CategoriaFormDestroy from '../views/categoria/CategoriaFormDestroy'
+import AvaliacaoFormList from '../views/avaliacao/AvaliacaoFormList'
+import AvaliacaoFormStore from '../views/avaliacao/AvaliacaoFormStore'
+import AvaliacaoFormUpdate from '../views/avaliacao/AvaliacaoFormUpdate'
+import AvaliacaoFormShow from '../views/avaliacao/AvaliacaoFormShow'
+import AvaliacaoFormDestroy from '../views/avaliacao/AvaliacaoFormDestroy'
 
-import CategoriaDaComunidadeFormList from     '../views/categoriaDaComunidade/CategoriaDaComunidadeFormList.jsx'
-import CategoriaDaComunidadeFormStore from    '../views/categoriaDaComunidade/CategoriaDaComunidadeFormStore'
-import CategoriaDaComunidadeFormUpdate from   '../views/categoriaDaComunidade/CategoriaDaComunidadeFormUpdate'
-import CategoriaDaComunidadeFormShow from     '../views/categoriaDaComunidade/CategoriaDaComunidadeFormShow'
-import CategoriaDaComunidadeFormDestroy from  '../views/categoriaDaComunidade/CategoriaDaComunidadeFormDestroy'
+import BibliotecaFormList from     '../views/avaliacaoDaAnalise/BibliotecaFormList'
+import BibliotecaFormStore from    '../views/avaliacaoDaAnalise/BibliotecaFormStore'
+import BibliotecaFormUpdate from   '../views/avaliacaoDaAnalise/BibliotecaFormUpdate'
+import BibliotecaFormShow from     '../views/avaliacaoDaAnalise/BibliotecaFormShow'
+import BibliotecaFormDestroy from  '../views/avaliacaoDaAnalise/BibliotecaFormDestroy'
 
-import ComentarioFormList from '../views/comentario/ComentarioFormList'
-import ComentarioFormStore from '../views/comentario/ComentarioFormStore'
-import ComentarioFormUpdate from '../views/comentario/ComentarioFormUpdate'
-import ComentarioFormShow from '../views/comentario/ComentarioFormShow'
-import ComentarioFormDestroy from '../views/comentario/ComentarioFormDestroy'
+import DesenvolvedoraFormList from '../views/desenvolvedora/DesenvolvedoraFormList'
+import DesenvolvedoraFormStore from '../views/desenvolvedora/DesenvolvedoraFormStore'
+import DesenvolvedoraFormUpdate from '../views/desenvolvedora/DesenvolvedoraFormUpdate'
+import DesenvolvedoraFormShow from '../views/desenvolvedora/DesenvolvedoraFormShow'
+import DesenvolvedoraFormDestroy from '../views/desenvolvedora/DesenvolvedoraFormDestroy'
 
-import FollowFormList from '../views/follow/FollowFormList'
-import FollowFormStore from '../views/follow/FollowFormStore'
-import FollowFormUpdate from '../views/follow/FollowFormUpdate'
-import FollowFormShow from '../views/follow/FollowFormShow'
-import FollowFormDestroy from '../views/follow/FollowFormDestroy'
+import GeneroFormList from '../views/genero/GeneroFormList'
+import GeneroFormStore from '../views/genero/GeneroFormStore'
+import GeneroFormUpdate from '../views/genero/GeneroFormUpdate'
+import GeneroFormShow from '../views/genero/GeneroFormShow'
+import GeneroFormDestroy from '../views/genero/GeneroFormDestroy'
 
-import PostFormList from '../views/post/PostFormList'
-import PostFormStore from '../views/post/PostFormStore'
-import PostFormUpdate from '../views/post/PostFormUpdate'
-import PostFormShow from '../views/post/PostFormShow'
-import PostFormDestroy from '../views/post/PostFormDestroy'
+import GeneroDoJogoFormList from '..views/generodojogo/GeneroDoJogoFormList'
+import GeneroDoJogoFormStore from '../views/generodojogo/GeneroDoJogoFormStore'
+import GeneroDoJogoFormUpdate from '../views/generodojogo/GeneroDoJogoFormUpdate'
+import GeneroDoJogoFormShow from '../views/generodojogo/GeneroDoJogoFormShow'
+import GeneroDoJogoFormDestroy from '../views/generodojogo/GeneroDoJogoFormDestroy'
+
+import JogoFormList from '../views/jogo/JogoFormList'
+import JogoFormStore from '../views/jogo/JogoFormStore'
+import JogoFormUpdate from '../views/jogo/JogoFormUpdate'
+import JogoFormShow from '../views/jogo/JogoFormShow'
+import JogoFormDestroy from '../views/jogo/JogoFormDestroy'
+
+import JogoNaBibliotecaFormList from '../views/jogonabiblioteca/JogoFormList'
+import JogoNaBibliotecaFormStore from '../views/jogonabiblioteca/JogoFormStore'
+import JogoNaBibliotecaFormUpdate from '../views/jogonabiblioteca/JogoFormUpdate'
+import JogoNaBibliotecaFormShow from '../views/jogonabiblioteca/JogoFormShow'
+import JogoNaBibliotecaFormDestroy from '../views/jogonabibliotecao/JogoFormDestroy'
 
 
 const Rotas = () => {
@@ -71,48 +83,61 @@ const Rotas = () => {
         <Route path="/user/show/:id" element={<UserFormShow />} />
         <Route path="/user/destroy/:id" element={<UserFormDestroy />} />
 
-      {/* comunidades */}
-        <Route path="/comunidade/index" element={<ComunidadeFormList />} />
-        <Route path="/comunidade/store" element={<ComunidadeFormStore />} />
-        <Route path="/comunidade/update/:id" element={<ComunidadeFormUpdate />} />
-        <Route path="/comunidade/show/:id" element={<ComunidadeFormShow />} />
-        <Route path="/comunidade/destroy/:id" element={<ComunidadeFormDestroy />} />
+      {/* analises */}
+        <Route path="/analise/index" element={<AnaliseFormList />} />
+        <Route path="/analise/store" element={<AnaliseFormStore />} />
+        <Route path="/analise/update/:id" element={<AnaliseFormUpdate />} />
+        <Route path="/analise/show/:id" element={<AnaliseFormShow />} />
+        <Route path="/analise/destroy/:id" element={<AnaliseFormDestroy />} />
 
-      {/* categorias */}
-        <Route path="/categoria/index" element={<CategoriaFormList />} />
-        <Route path="/categoria/store" element={<CategoriaFormStore />} />
-        <Route path="/categoria/update/:id" element={<CategoriaFormUpdate />} />
-        <Route path="/categoria/show/:id" element={<CategoriaFormShow />} />
-        <Route path="/categoria/destroy/:id" element={<CategoriaFormDestroy />} />
+      {/* avaliacoes */}
+        <Route path="/avaliacao/index" element={<AvaliacaoFormList />} />
+        <Route path="/avaliacao/store" element={<AvaliacaoFormStore />} />
+        <Route path="/avaliacao/update/:id" element={<AvaliacaoFormUpdate />} />
+        <Route path="/avaliacao/show/:id" element={<AvaliacaoFormShow />} />
+        <Route path="/avaliacao/destroy/:id" element={<AvaliacaoFormDestroy />} />
 
-      {/* categorias da comunidade */}
-        <Route path="/categoriaDaComunidade/index" element={<CategoriaDaComunidadeFormList />} />
-        <Route path="/categoriaDaComunidade/store" element={<CategoriaDaComunidadeFormStore />} />
-        <Route path="/categoriaDaComunidade/update/:id" element={<CategoriaDaComunidadeFormUpdate />} />
-        <Route path="/categoriaDaComunidade/show/:id" element={<CategoriaDaComunidadeFormShow />} />
-        <Route path="/categoriaDaComunidade/destroy/:id" element={<CategoriaDaComunidadeFormDestroy />} />
+      {/* biblioteca */}
+        <Route path="/biblioteca/index" element={<BibliotecaFormList />} />
+        <Route path="/biblioteca/store" element={<BibliotecaFormStore />} />
+        <Route path="/biblioteca/update/:id" element={<BibliotecaFormUpdate />} />
+        <Route path="/biblioteca/show/:id" element={<BibliotecaFormShow />} />
+        <Route path="/biblioteca/destroy/:id" element={<BibliotecaFormDestroy />} />
 
-      {/* comentarios */}
-        <Route path="/comentario/index" element={<ComentarioFormList />} />
-        <Route path="/comentario/store" element={<ComentarioFormStore />} />
-        <Route path="/comentario/update/:id" element={<ComentarioFormUpdate />} />
-        <Route path="/comentario/show/:id" element={<ComentarioFormShow />} />
-        <Route path="/comentario/destroy/:id" element={<ComentarioFormDestroy />} />
+      {/* desenvolvedoras */}
+        <Route path="/desenvolvedora/index" element={<DesenvolvedoraFormList />} />
+        <Route path="/desenvolvedora/store" element={<DesenvolvedoraFormStore />} />
+        <Route path="/desenvolvedora/update/:id" element={<DesenvolvedoraFormUpdate />} />
+        <Route path="/desenvolvedora/show/:id" element={<DesenvolvedoraFormShow />} />
+        <Route path="/desenvolvedora/destroy/:id" element={<DesenvolvedoraFormDestroy />} />
 
-      {/* follows */}
-        <Route path="/follow/index" element={<FollowFormList />} />
-        <Route path="/follow/store" element={<FollowFormStore />} />
-        <Route path="/follow/update/:id" element={<FollowFormUpdate />} />
-        <Route path="/follow/show/:id" element={<FollowFormShow />} />
-        <Route path="/follow/destroy/:id" element={<FollowFormDestroy />} />
+      {/* generos */}
+        <Route path="/genero/index" element={<GeneroFormList />} />
+        <Route path="/genero/store" element={<GeneroFormStore />} />
+        <Route path="/genero/update/:id" element={<GeneroFormUpdate />} />
+        <Route path="/genero/show/:id" element={<GeneroFormShow />} />
+        <Route path="/genero/destroy/:id" element={<GeneroFormDestroy />} />
 
-      {/* posts */}
-        <Route path="/post/index" element={<PostFormList />} />
-        <Route path="/post/store" element={<PostFormStore />} />
-        <Route path="/post/update/:id" element={<PostFormUpdate />} />
-        <Route path="/post/show/:id" element={<PostFormShow />} />
-        <Route path="/post/destroy/:id" element={<PostFormDestroy />} />
+      {/* generodojogos */}
+        <Route path="/generodojogo/index" element={<GeneroDoJogoFormList />} />
+        <Route path="/generodojogo/store" element={<GeneroDoJogoFormStore />} />
+        <Route path="/generodojogo/update/:id" element={<GeneroDoJogoFormUpdate />} />
+        <Route path="/generodojogo/show/:id" element={<GeneroDoJogoFormShow />} />
+        <Route path="/generodojogo/destroy/:id" element={<GeneroDoJogoFormDestroy />} />
+      
+      {/* jogos */}
+        <Route path="/jogo/index" element={<JogoFormList />} />
+        <Route path="/jogo/store" element={<JogoFormStore />} />
+        <Route path="/jogo/update/:id" element={<JogoFormUpdate />} />
+        <Route path="/jogo/show/:id" element={<JogoFormShow />} />
+        <Route path="/jogo/destroy/:id" element={<JogoFormDestroy />} />
 
+      {/* jogonabibliotecas */}
+        <Route path="/jogonabiblioteca/index" element={<JogoNaBibliotecaFormList />} />
+        <Route path="/jogonabiblioteca/store" element={<JogoNaBibliotecaFormStore />} />
+        <Route path="/jogonabiblioteca/update/:id" element={<JogoNaBibliotecaFormUpdate />} />
+        <Route path="/jogonabiblioteca/show/:id" element={<JogoNaBibliotecaFormShow />} />
+        <Route path="/jogonabiblioteca/destroy/:id" element={<JogoNaBibliotecaFormDestroy />} />
       </Route>
     </Routes>
   )

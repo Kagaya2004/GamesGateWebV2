@@ -83,7 +83,6 @@ Route::prefix('jogonabiblioteca')->group(function () {
     Route::get('/show/{id}', [JogoNaBibliotecaController::class, 'show']);
     Route::post('/store', [JogoNaBibliotecaController::class, 'store']);
     Route::put('/update/{id}',   [JogoNaBibliotecaController::class, 'update']);
-
     Route::delete('/destroy/{id}', [JogoNaBibliotecaController::class, 'destroy']);
 });
 
