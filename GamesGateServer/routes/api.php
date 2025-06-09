@@ -11,13 +11,16 @@ use App\Http\Controllers\GeneroDoJogoController;
 use App\Http\Controllers\JogoNaBibliotecaController;
 use App\Http\Controllers\BibliotecaController;
 use App\Http\Controllers\DesenvolvedoraController;
-use App\Http\Controllers\Api\LoginController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\AnaliseController;
+use App\Http\Controllers\AvaliacaoController;
 
 Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
 
-Route::post('/login', [LoginController::class, 'login']);
+Route::post('/loginUsuario', [LoginController::class, 'loginUsuario']);
+Route::post('/loginDesenvolvedora', [LoginController::class, 'loginDesenvolvedora']);
 
 Route::prefix('analise')->group(function () {
     Route::get('/index', [AnaliseController::class, 'index']);
