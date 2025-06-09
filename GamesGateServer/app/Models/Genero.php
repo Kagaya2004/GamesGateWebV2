@@ -17,6 +17,7 @@ class Genero extends Model
      */
     protected $fillable = [
         'nome',
+        'descricao',
     ];
 
     /**
