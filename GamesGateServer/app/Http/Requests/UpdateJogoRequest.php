@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateComunidadeRequest extends FormRequest
+class UpdateJogoRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,8 +23,8 @@ class UpdateComunidadeRequest extends FormRequest
     {
         $id = $this->route('id');
         return [
-            'nome' => 'required|string|max:255|unique:jogos,nome' .$id,
-            'desenvolvedora_id' => 'required|integer|exists:desenvolvedoras,id',
+            'nome' => 'string|max:255|unique:jogos,nome' .$id,
+            'desenvolvedora_id' => 'integer|exists:desenvolvedoras,id',
             'dataLancamento' => 'date|date_format:Y-m-d',
         ];
     }

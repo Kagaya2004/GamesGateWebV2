@@ -22,7 +22,7 @@ class UpdateGeneroRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'nome' => 'required|string|max:255|unique:generos,nome',
+            'nome' => 'string|max:255|unique:generos,nome',
         ];
     }
     function messages()
