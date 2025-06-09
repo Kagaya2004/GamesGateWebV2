@@ -12,8 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('avaliacoes', function(Blueprint $table){
-            $table->foreignId('desenvolvedora_id')
-                ->contrained('desenvolvedoras')
+            $table->foreignId('analise_id')
+                ->contrained('analises')
                 ->onDelete('cascade');
         });
     }

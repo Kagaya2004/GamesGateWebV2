@@ -23,7 +23,7 @@ class StoreAvaliacaoRequest extends FormRequest
     {
         return [
             'descricao' => 'required|string',
-            'analise_id' => 'exists:analise,id',
+            'analise_id' => 'exists:analises,id',
         ];
     }
     public function messages()

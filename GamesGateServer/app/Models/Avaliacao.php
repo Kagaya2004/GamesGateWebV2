@@ -10,8 +10,10 @@ class Avaliacao extends Model
 {
     use HasFactory, SoftDeletes;
 
+    protected $table = 'avaliacoes';
+
     // Conecta com outros modelos
-    public function Avaliacao()
+    public function Analise()
     {
         return $this->belongsTo(Analise::class);
     }
@@ -23,6 +25,7 @@ class Avaliacao extends Model
      */
     protected $fillable = [
         'descricao',
+        'analise_id',
     ];
 
     /**
