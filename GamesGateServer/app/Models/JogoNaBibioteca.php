@@ -25,6 +25,8 @@ class JogoNaBibioteca extends Model
      * @var list<string>
      */
     protected $fillable = [
+        'biblioteca_id',
+        'jogo_id',
     ];
 
     /**
