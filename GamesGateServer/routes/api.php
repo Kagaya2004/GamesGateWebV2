@@ -5,12 +5,12 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\ComunidadeController;
-use App\Http\Controllers\CategoriaController;
-use App\Http\Controllers\CategoriaDaComunidadeController;
-use App\Http\Controllers\PostController;
-use App\Http\Controllers\ComentarioController;
-use App\Http\Controllers\FollowController;
+use App\Http\Controllers\JogoController;
+use App\Http\Controllers\GeneroController;
+use App\Http\Controllers\GeneroDoJogoController;
+use App\Http\Controllers\JogoNaBibliotecaController;
+use App\Http\Controllers\BibliotecaController;
+use App\Http\Controllers\DesenvolvedoraController;
 use App\Http\Controllers\Api\LoginController;
 
 Route::get('/user', function (Request $request) {
@@ -19,6 +19,70 @@ Route::get('/user', function (Request $request) {
 
 Route::post('/login', [LoginController::class, 'login']);
 
+Route::prefix('analise')->group(function () {
+    Route::get('/index', [AnaliseController::class, 'index']);
+    Route::get('/show/{id}', [AnaliseController::class, 'show']);
+    Route::post('/store', [AnaliseController::class, 'store']);
+    Route::put('/update/{id}',   [AnaliseController::class, 'update']);
+    Route::delete('/destroy/{id}', [AnaliseController::class, 'destroy']);
+});
+
+Route::prefix('avaliacao')->group(function () {
+    Route::get('/index', [AvaliacaoController::class, 'index']);
+    Route::get('/show/{id}', [AvaliacaoController::class, 'show']);
+    Route::post('/store', [AvaliacaoController::class, 'store']);
+    Route::put('/update/{id}',   [AvaliacaoController::class, 'update']);
+    Route::delete('/destroy/{id}', [AvaliacaoController::class, 'destroy']);
+});
+
+Route::prefix('biblioteca')->group(function () {
+    Route::get('/index', [BibliotecaController::class, 'index']);
+    Route::get('/show/{id}', [BibliotecaController::class, 'show']);
+    Route::post('/store', [BibliotecaController::class, 'store']);
+    Route::put('/update/{id}',   [BibliotecaController::class, 'update']);
+    Route::delete('/destroy/{id}', [BibliotecaController::class, 'destroy']);
+});
+
+Route::prefix('desenvolvedora')->group(function () {
+    Route::get('/index', [DesenvolvedoraController::class, 'index']);
+    Route::get('/show/{id}', [DesenvolvedoraController::class, 'show']);
+    Route::post('/store', [DesenvolvedoraController::class, 'store']);
+    Route::put('/update/{id}',   [DesenvolvedoraController::class, 'update']);
+    Route::delete('/destroy/{id}', [DesenvolvedoraController::class, 'destroy']);
+});
+
+Route::prefix('genero')->group(function () {
+    Route::get('/index', [GeneroController::class, 'index']);
+    Route::get('/show/{id}', [GeneroController::class, 'show']);
+    Route::post('/store', [GeneroController::class, 'store']);
+    Route::put('/update/{id}', [GeneroController::class, 'update']);
+    Route::delete('/destroy/{id}', [GeneroController::class, 'destroy']);
+});
+
+Route::prefix('generodojogo')->group(function () {
+    Route::get('/index', [GeneroDoJogoController::class, 'index']);
+    Route::get('/show/{id}', [GeneroDoJogoController::class, 'show']);
+    Route::post('/store', [GeneroDoJogoController::class, 'store']);
+    Route::put('/update/{id}',   [GeneroDoJogoController::class, 'update']);
+    Route::delete('/destroy/{id}', [GeneroDoJogoController::class, 'destroy']);
+});
+
+Route::prefix('jogo')->group(function () {
+    Route::get('/index', [JogoController::class, 'index']);
+    Route::get('/show/{id}', [JogoController::class, 'show']);
+    Route::post('/store', [JogoController::class, 'store']);
+    Route::put('/update/{id}',   [JogoController::class, 'update']);
+    Route::delete('/destroy/{id}', [JogoController::class, 'destroy']);
+});
+
+Route::prefix('jogonabiblioteca')->group(function () {
+    Route::get('/index', [JogoNaBibliotecaController::class, 'index']);
+    Route::get('/show/{id}', [JogoNaBibliotecaController::class, 'show']);
+    Route::post('/store', [JogoNaBibliotecaController::class, 'store']);
+    Route::put('/update/{id}',   [JogoNaBibliotecaController::class, 'update']);
+
+    Route::delete('/destroy/{id}', [JogoNaBibliotecaController::class, 'destroy']);
+});
 
 Route::prefix('user')->group(function () {
     Route::get('/index', [UserController::class, 'index']);
@@ -26,53 +90,4 @@ Route::prefix('user')->group(function () {
     Route::post('/store', [UserController::class, 'store']);
     Route::put('/update/{id}', [UserController::class, 'update']);
     Route::delete('/destroy/{id}', [UserController::class, 'destroy']);
-});
-
-Route::prefix('comunidade')->group(function () {
-    Route::get('/index', [ComunidadeController::class, 'index']);
-    Route::get('/show/{id}', [ComunidadeController::class, 'show']);
-    Route::post('/store', [ComunidadeController::class, 'store']);
-    Route::put('/update/{id}',   [ComunidadeController::class, 'update']);
-    Route::delete('/destroy/{id}', [ComunidadeController::class, 'destroy']);
-});
-
-Route::prefix('categoria')->group(function () {
-    Route::get('/index', [CategoriaController::class, 'index']);
-    Route::get('/show/{id}', [CategoriaController::class, 'show']);
-    Route::post('/store', [CategoriaController::class, 'store']);
-    Route::put('/update/{id}', [CategoriaController::class, 'update']);
-    Route::delete('/destroy/{id}', [CategoriaController::class, 'destroy']);
-});
-
-Route::prefix('categoriadacomunidade')->group(function () {
-    Route::get('/index', [CategoriaDaComunidadeController::class, 'index']);
-    Route::get('/show/{id}', [CategoriaDaComunidadeController::class, 'show']);
-    Route::post('/store', [CategoriaDaComunidadeController::class, 'store']);
-    Route::put('/update/{id}',   [CategoriaDaComunidadeController::class, 'update']);
-    Route::delete('/destroy/{id}', [CategoriaDaComunidadeController::class, 'destroy']);
-});
-
-Route::prefix('post')->group(function () {
-    Route::get('/index', [PostController::class, 'index']);
-    Route::get('/show/{id}', [PostController::class, 'show']);
-    Route::post('/store', [PostController::class, 'store']);
-    Route::put('/update/{id}',   [PostController::class, 'update']);
-
-    Route::delete('/destroy/{id}', [PostController::class, 'destroy']);
-});
-
-Route::prefix('comentario')->group(function () {
-    Route::get('/index', [ComentarioController::class, 'index']);
-    Route::get('/show/{id}', [ComentarioController::class, 'show']);
-    Route::post('/store', [ComentarioController::class, 'store']);
-    Route::put('/update/{id}',   [ComentarioController::class, 'update']);
-    Route::delete('/destroy/{id}', [ComentarioController::class, 'destroy']);
-});
-
-Route::prefix('follow')->group(function () {
-    Route::get('/index', [FollowController::class, 'index']);
-    Route::get('/show/{id}', [FollowController::class, 'show']);
-    Route::post('/store', [FollowController::class, 'store']);
-    Route::put('/update/{id}',   [FollowController::class, 'update']);
-    Route::delete('/destroy/{id}', [FollowController::class, 'destroy']);
 });
