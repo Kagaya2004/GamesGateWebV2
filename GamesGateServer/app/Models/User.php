@@ -48,7 +48,7 @@ class User extends Authenticatable
         'remember_token',
         'last_login',
         'updated_at',
-        'create_at',
+        'created_at',
         'deleted_at',
     ];
 
