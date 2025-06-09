@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('jogos_na_biblioteca', function(Blueprint $table){
+        Schema::table('genero_do_jogos', function(Blueprint $table){
             $table->foreignId('jogo_id')
                 ->contrained('jogos')
                 ->onDelete('cascade');
-            $table->foreignId('biblioeca_id')
-                ->contrained('bibliotecas')
+            $table->foreignId('genero_id')
+                ->contrained('generos')
                 ->onDelete('cascade');
         });
     }
