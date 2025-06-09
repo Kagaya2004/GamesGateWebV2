@@ -61,7 +61,7 @@ function DesenvolvedoraFormUpdate() {
           />
           <input
               value={desenvolvedora.dataLancamento}
-              placeholder="Email da Desenvovledora"
+              placeholder="Email da Desenvolvedora"
               onChange={
                   e => setDesenvolvedora({
                       ...desenvolvedora, email: e.target.value
