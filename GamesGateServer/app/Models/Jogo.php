@@ -29,6 +29,7 @@ class Jogo extends Model
         'nome',
         'descricao',
         'dataLancamento',
+        'desenvolvedora_id',
     ];
 
     /**
