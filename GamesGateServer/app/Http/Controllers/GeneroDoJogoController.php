@@ -143,6 +143,19 @@ class GeneroDoJogoController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $data = GeneroDoJogo::find($id);
+        if (!$data) {
+            return response()->json([
+                'message'=>'Conexão não localizada',
+                'data'=>$id,
+                'status'=>404
+            ],404);
+        }
+        $data->delete();
+        return response()->json([
+            'message'=>'Conexão excluída com sucesso',
+            'status'=>200,
+            'data'=>$data
+        ], 200);
     }
 }

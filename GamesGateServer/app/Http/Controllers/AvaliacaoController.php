@@ -135,14 +135,14 @@ class AvaliacaoController extends Controller
         $data = Avaliacao::find($id);
         if (!$data) {
             return response()->json([
-                'message'=>'Avaliação não localizado',
+                'message'=>'Avaliação não localizada',
                 'data'=>$id,
                 'status'=>404
             ],404);
         }
         $data->delete();
         return response()->json([
-            'message'=>'Avaliação excluído com sucesso',
+            'message'=>'Avaliação excluída com sucesso',
             'status'=>200,
             'data'=>$data
         ], 200);

@@ -65,8 +65,8 @@ class JogoNaBibliotecaController extends Controller
         $validator = $request->validated();
 
         $data = JogoNaBiblioteca::create([
-            'categoria_id' => $request->categoria_id,
-            'comunidade_id' => $request->comunidade_id,
+            'jogo_id' => $request->jogo_id,
+            'biblioteca_id' => $request->biblioteca_id,
         ]);
 
         return response()->json([
@@ -143,6 +143,19 @@ class JogoNaBibliotecaController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $data = JogoNaBiblioteca::find($id);
+        if (!$data) {
+            return response()->json([
+                'message'=>'Conexão não localizada',
+                'data'=>$id,
+                'status'=>404
+            ],404);
+        }
+        $data->delete();
+        return response()->json([
+            'message'=>'Conexão excluída com sucesso',
+            'status'=>200,
+            'data'=>$data
+        ], 200);
     }
 }
