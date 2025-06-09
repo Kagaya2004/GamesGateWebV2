@@ -18,7 +18,7 @@ function JogoFormStore() {
         axiosClient.post(`/jogo/store`, jogo)
             .then(() => {
                 setJogo({});
-                console.log('Usuário incluído com sucesso');
+                console.log('Jogo incluído com sucesso');
                 navigate('/jogo/index')
             }).catch((error) => {
                 console.log(error);
@@ -35,7 +35,7 @@ function JogoFormStore() {
         <Fragment>
             <div className="display">
                 <div className="card animated fadeinDown">
-                    <h1>Inclusão de Usuário</h1>
+                    <h1>Inclusão de Jogo</h1>
 
                     <form onSubmit={(e) => onSubmit(e)}>
                         <input
@@ -44,7 +44,7 @@ function JogoFormStore() {
                             placeholder="Nome do Jogo"
                             onChange={
                                 e => setJogo({
-                                    ...jogo, name: e.target.value
+                                    ...jogo, nome: e.target.value
                                 })
                             }
                         />
