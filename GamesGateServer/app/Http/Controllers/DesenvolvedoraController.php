@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-use Symfony\Component\HttpKernel\Exception\HttpResponseException;
+use Symfony\Component\HttpKernel\Exception\HttpException;
 use App\Models\Desenvolvedora;
 use App\Http\Requests\StoreDesenvolvedoraRequest;
 use App\Http\Requests\UpdateDesenvolvedoraRequest;
@@ -64,20 +65,12 @@ class DesenvolvedoraController extends Controller
     {
         $validator = $request->validated();
 
-        if ($validator->fails()) {
-
-            return response()->json([
-                'message'=>"Erro nas informações da Desenvolvedora",
-                'status'=>404,
-                'errors'=>$validator->errors()
-            ],404);
-        }
-
         $data = Desenvolvedora::create($request->all());
-        $data->password = Hash::make($request->password);
+
+        $data->senha = Hash::make($request->senha);
         $data->save();
         return response()->json([
-            'message'=>'Desenvolvedora criada com sucesso',
+            'message'=>'Desenvolvedora cadastrado com sucesso',
             'status'=>200,
             'data'=>$data
         ],200);
@@ -135,7 +128,7 @@ class DesenvolvedoraController extends Controller
         $data->descricao = $request->descricao ?? $data->descricao;
         $data->pais = $request->pais ?? $data->pais;
         $data->site = $request->site ?? $data->site;
-        if ($request->has('password')) {
+        if ($request->has('senha')) {
             $data->senha = Hash::make($request->senha);
         }
 
