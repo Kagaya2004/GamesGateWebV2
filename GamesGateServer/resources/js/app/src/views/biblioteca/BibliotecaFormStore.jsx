@@ -1,6 +1,6 @@
-import React, { Fragment, useEffect, useState } from 'react'
+import React, { Fragment, useState } from 'react'
 import axiosClient from '../../axiosClient';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 function BibliotecaFormStore() {
     const navigate = useNavigate();
@@ -11,12 +11,15 @@ function BibliotecaFormStore() {
         quantidadeJogos: ''
     });
 
-    // Função do tipo Anônima
     const onSubmit = (e) => {
         e.preventDefault();
         axiosClient.post(`/biblioteca/store`, biblioteca)
             .then(() => {
-                setBiblioteca({});
+                setBiblioteca({
+                    id: null,
+                    user_id: '',
+                    quantidadeJogos: ''
+                });
                 console.log('Biblioteca incluída com sucesso');
                 navigate('/biblioteca/index')
             }).catch((error) => {
@@ -24,54 +27,32 @@ function BibliotecaFormStore() {
             })
     }
 
-    const onCancel = (e) => {
-        navigate('/biblioteca/index');
-    }
-
-
-
     return (
         <Fragment>
-            <div className="display">
-                <div className="card animated fadeinDown">
-                    <h1>Inclusão de Biblioteca</h1>
+            <form className="form-store" onSubmit={onSubmit}>
+                <div className="form-title">Inclusão de Biblioteca</div>
 
-                    <form onSubmit={(e) => onSubmit(e)}>
-                        <input
-                            type="text"
-                            value={biblioteca.user_id}
-                            placeholder="ID do Usuário"
-                            onChange={
-                                e => setBiblioteca({
-                                    ...biblioteca, user_id: e.target.value
-                                })
-                            }
-                        />
-                        <input
-                            type="text"
-                            value={biblioteca.user_id}
-                            placeholder="Quantidade de Jogos"
-                            onChange={
-                                e => setBiblioteca({
-                                    ...biblioteca, quantidadeJogos: e.target.value
-                                })
-                            }
-                        />
-                        <br />
-                        <br />
-                        <button
-                            className="btn btn-edit">
-                            Salvar
-                        </button>
-                        <Link
-                            type='button'
-                            className='btn btn-cancel'
-                            to='/biblioteca/index'>
-                            Cancelar
-                        </Link>
-                    </form>
+                <label>ID do Usuário</label>
+                <input
+                    type="text"
+                    value={biblioteca.user_id}
+                    onChange={e => setBiblioteca({ ...biblioteca, user_id: e.target.value })}
+                    required
+                />
+
+                <label>Quantidade de Jogos</label>
+                <input
+                    type="text"
+                    value={biblioteca.quantidadeJogos}
+                    onChange={e => setBiblioteca({ ...biblioteca, quantidadeJogos: e.target.value })}
+                    required
+                />
+
+                <div className="form-store-actions">
+                    <button className="btn-save" type="submit">Salvar</button>
+                    <Link className="btn-cancel" to="/biblioteca/index">Cancelar</Link>
                 </div>
-            </div>
+            </form>
         </Fragment>
     )
 }

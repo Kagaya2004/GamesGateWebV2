@@ -1,4 +1,3 @@
-
 * {
     box-sizing: border-box;
     margin: 0;
@@ -157,9 +156,25 @@ body {
 
 table {
     width: 100%;
-    border-spacing: 0;
     border-collapse: collapse;
-    font-size: 15px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* Cabeçalho verde apenas no thead */
+thead th {
+  background: #137a13; /* verde escuro */
+  color: #fff;
+  padding: 10px 8px;
+  text-align: left;
+}
+
+/* Remove fundo verde de outros elementos */
+tbody td {
+  background: #fff;
+  color: #222;
+  padding: 8px;
+  border-bottom: 1px solid #eee;
 }
 
 th, td {
@@ -266,6 +281,49 @@ th.actions, td.actions {
 
 }
 
+/* estilo para form-store */
+.form-store-form {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-store-form .form {
+    width: 560px;
+    margin-top: 150px;
+    position: relative;
+    z-index: 1;
+    background: #FFFFFF;
+    max-width: 560px;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 2px 0 rgba(0,0,0,0.8);
+    font-size: 1rem;
+
+}
+
+.form-store-form .title {
+    font-size: 25px;
+    text-align: center;
+}
+
+.p-20 {
+    margin-bottom: 20px;
+}
+
+.form-store-form .form .message {
+    margin: 15px;
+    color: #b3b3b3;
+    font-size: 16px;
+    text-align: center;
+}
+
+
+.form-store-form .form .message a {
+    color: #5b08a7;
+    text-decoration: none;
+
+}
 
 
 /* estilo para o default layout */
@@ -318,4 +376,118 @@ th.actions, td.actions {
 
 #defaultLayout main {
     padding: 2rem;
+}
+
+/* Estilo global para todos os formulários do tipo FormStore */
+.form-store {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  background: #fff;
+  padding: 36px 32px 28px 32px;
+  border-radius: 12px;
+  box-shadow: 0 2px 16px rgba(44, 62, 80, 0.10);
+  max-width: 420px;
+  margin: 36px auto;
+  border: 1px solid #f0f0f0;
+}
+
+.form-store .form-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #222;
+  margin-bottom: 18px;
+  letter-spacing: 0.01em;
+  text-align: left;
+}
+
+.form-store label {
+  font-weight: 600;
+  color: #000000;
+  margin-bottom: 4px;
+  font-size: 1rem;
+  letter-spacing: 0.01em;
+}
+
+.form-store input,
+.form-store textarea,
+.form-store select {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1.5px solid #e0e0e0;
+  border-radius: 6px;
+  font-size: 1rem;
+  background: #fafbfc;
+  transition: border 0.2s, box-shadow 0.2s;
+  color: #222;
+  margin-bottom: 2px;
+  box-shadow: 0 1px 2px rgba(44, 62, 80, 0.03);
+}
+
+.form-store input:focus,
+.form-store textarea:focus,
+.form-store select:focus {
+  border: 2px solid #5b08a7;
+  background: #fff;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(91, 8, 167, 0.10);
+}
+
+.form-store .invalid-feedback,
+.form-store .valid-feedback {
+  font-size: 0.92rem;
+  margin-top: 2px;
+  margin-bottom: -10px;
+}
+
+.form-store .invalid-feedback {
+  color: #dc3545;
+}
+
+.form-store .valid-feedback {
+  color: #28a745;
+}
+
+.form-store-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 10px;
+  justify-content: flex-end;
+}
+
+.form-store .btn-save {
+  background: #5b08a7;
+  color: #fff;
+  font-weight: 600;
+  padding: 10px 28px;
+  border-radius: 5px;
+  border: none;
+  font-size: 1rem;
+  transition: background 0.2s;
+}
+
+.form-store .btn-save:hover {
+  background: #3d066e;
+}
+
+.form-store .btn-cancel {
+  background: #13b6b6;
+  color: #fff;
+  font-weight: 600;
+  padding: 10px 22px;
+  border-radius: 5px;
+  border: none;
+  font-size: 1rem;
+  transition: background 0.2s;
+}
+
+.form-store .btn-cancel:hover {
+  background: #0e8e8e;
+}
+
+@media (max-width: 600px) {
+  .form-store {
+    padding: 16px 6px;
+    max-width: 98vw;
+  }
 }

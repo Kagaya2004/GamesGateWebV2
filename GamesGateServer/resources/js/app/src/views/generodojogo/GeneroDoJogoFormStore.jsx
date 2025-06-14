@@ -1,6 +1,6 @@
-import React, { Fragment, useEffect, useState } from 'react'
+import React, { Fragment, useState } from 'react'
 import axiosClient from '../../axiosClient';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 function GeneroDoJogoFormStore() {
     const navigate = useNavigate();
@@ -8,70 +8,51 @@ function GeneroDoJogoFormStore() {
     const [generoDoJogo, setGeneroDoJogo] = useState({
         id: null,
         genero_id: '',
-        jogo_id:'',
+        jogo_id: '',
     });
 
-    // Função do tipo Anônima
     const onSubmit = (e) => {
         e.preventDefault();
         axiosClient.post(`/generodojogo/store`, generoDoJogo)
             .then(() => {
-                setGeneroDoJogo({});
-                console.log('Conexãoe entre Gênero e Jogo criada com sucesso!');
+                setGeneroDoJogo({
+                    id: null,
+                    genero_id: '',
+                    jogo_id: '',
+                });
+                console.log('Conexão entre Gênero e Jogo criada com sucesso!');
                 navigate('/generodojogo/index')
             }).catch((error) => {
                 console.log(error);
             })
     }
 
-    const onCancel = (e) => {
-        navigate('/generodojogo/index');
-    }
-
-
-
     return (
         <Fragment>
-            <div className="display">
-                <div className="card animated fadeinDown">
-                    <h1>Inclusão de Conexão entre Gênero e Jogo</h1>
+            <form className="form-store" onSubmit={onSubmit}>
+                <div className="form-title">Inclusão de Conexão entre Gênero e Jogo</div>
 
-                    <form onSubmit={(e) => onSubmit(e)}>
-                        <input
-                            type="text"
-                            value={generoDoJogo.genero_id}
-                            placeholder="Gênero "
-                            onChange={
-                                e => setGeneroDoJogo({
-                                    ...generoDoJogo, genero_id: e.target.value
-                                })
-                            }
-                        />
-                        <input
-                            type="text"
-                            value={generoDoJogo.jogo_id}
-                            placeholder="Jogo "
-                            onChange={
-                                e => setGeneroDoJogo({
-                                    ...generoDoJogo, jogo_id: e.target.value
-                                })
-                            }
-                        />
-                        <br />
-                        <br />
-                        <button
-                            className="btn btn-edit">
-                            Salvar
-                        </button>
-                        <Link
-                            type='button'
-                            className='btn btn-cancel'
-                            to='/generodojogo/index'>
-                            Cancelar
-                        </Link>
-                    </form>
+                <label>ID do Gênero</label>
+                <input
+                    type="text"
+                    value={generoDoJogo.genero_id}
+                    onChange={e => setGeneroDoJogo({ ...generoDoJogo, genero_id: e.target.value })}
+                    required
+                />
+
+                <label>ID do Jogo</label>
+                <input
+                    type="text"
+                    value={generoDoJogo.jogo_id}
+                    onChange={e => setGeneroDoJogo({ ...generoDoJogo, jogo_id: e.target.value })}
+                    required
+                />
+
+                <div className="form-store-actions">
+                    <button className="btn-save" type="submit">Salvar</button>
+                    <Link className="btn-cancel" to="/generodojogo/index">Cancelar</Link>
                 </div>
-            </div>
+            </form>
         </Fragment>
     )
 }

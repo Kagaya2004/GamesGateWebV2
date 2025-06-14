@@ -49,7 +49,6 @@ function UserFormList() {
               <th className='center actions' colSpan={3}>Ações</th>
             </tr>
           </thead>
-
           <tbody>
             {
               users.length > 0 ? (

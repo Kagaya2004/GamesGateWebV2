@@ -1,6 +1,6 @@
-import React, { Fragment, useEffect, useState } from 'react'
+import React, { Fragment, useState } from 'react'
 import axiosClient from '../../axiosClient';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 function AnaliseFormStore() {
     const navigate = useNavigate();
@@ -8,17 +8,22 @@ function AnaliseFormStore() {
     const [analise, setAnalise] = useState({
         id: null,
         titulo: '',
-        curtidas:'',
-        user_id:'',
-        jogo_id:'',
+        curtidas: '',
+        user_id: '',
+        jogo_id: '',
     });
 
-    // Função do tipo Anônima
     const onSubmit = (e) => {
         e.preventDefault();
         axiosClient.post(`/analise/store`, analise)
             .then(() => {
-                setAnalise({});
+                setAnalise({
+                    id: null,
+                    titulo: '',
+                    curtidas: '',
+                    user_id: '',
+                    jogo_id: '',
+                });
                 console.log('Análise incluída com sucesso');
                 navigate('/analise/index')
             }).catch((error) => {
@@ -26,74 +31,48 @@ function AnaliseFormStore() {
             })
     }
 
-    const onCancel = (e) => {
-        navigate('/analise/index');
-    }
-
-
-
     return (
         <Fragment>
-            <div className="display">
-                <div className="card animated fadeinDown">
-                    <h1>Inclusão de Análise</h1>
+            <form className="form-store" onSubmit={onSubmit}>
+                <div className="form-title">Inclusão de Análise</div>
 
-                    <form onSubmit={(e) => onSubmit(e)}>
-                        <input
-                            type="text"
-                            value={analise.titulo}
-                            placeholder="Título da Análise "
-                            onChange={
-                                e => setAnalise({
-                                    ...analise, titulo: e.target.value
-                                })
-                            }
-                        />
-                        <input
-                            type="text"
-                            value={analise.curtidas}
-                            placeholder="Número de Curidas da Análise "
-                            onChange={
-                                e => setAnalise({
-                                    ...analise, curtidas: e.target.value
-                                })
-                            }
-                        />
-                        <input
-                            type="text"
-                            value={analise.user_id}
-                            placeholder="ID do Usuário da Análise "
-                            onChange={
-                                e => setAnalise({
-                                    ...analise, user_id: e.target.value
-                                })
-                            }
-                        />
-                        <input
-                            type="text"
-                            value={analise.jogo}
-                            placeholder="ID do Jogo da Análise "
-                            onChange={
-                                e => setAnalise({
-                                    ...analise, jogo_id: e.target.value
-                                })
-                            }
-                        />
-                        <br />
-                        <br />
-                        <button
-                            className="btn btn-edit">
-                            Salvar
-                        </button>
-                        <Link
-                            type='button'
-                            className='btn btn-cancel'
-                            to='/analise/index'>
-                            Cancelar
-                        </Link>
-                    </form>
+                <label>Título da Análise</label>
+                <input
+                    type="text"
+                    value={analise.titulo}
+                    onChange={e => setAnalise({ ...analise, titulo: e.target.value })}
+                    required
+                />
+
+                <label>Número de Curtidas</label>
+                <input
+                    type="number"
+                    value={analise.curtidas}
+                    onChange={e => setAnalise({ ...analise, curtidas: e.target.value })}
+                    required
+                />
+
+                <label>ID do Usuário</label>
+                <input
+                    type="text"
+                    value={analise.user_id}
+                    onChange={e => setAnalise({ ...analise, user_id: e.target.value })}
+                    required
+                />
+
+                <label>ID do Jogo</label>
+                <input
+                    type="text"
+                    value={analise.jogo_id}
+                    onChange={e => setAnalise({ ...analise, jogo_id: e.target.value })}
+                    required
+                />
+
+                <div className="form-store-actions">
+                    <button className="btn-save" type="submit">Salvar</button>
+                    <Link className="btn-cancel" to="/analise/index">Cancelar</Link>
                 </div>
-            </div>
+            </form>
         </Fragment>
     )
 }

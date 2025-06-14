@@ -1,77 +1,58 @@
-import React, { Fragment, useEffect, useState } from 'react'
+import React, { Fragment, useState } from 'react'
 import axiosClient from '../../axiosClient';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 function JogoNaBibliotecaFormStore() {
     const navigate = useNavigate();
 
     const [jogonabiblioteca, setJogoNaBiblioteca] = useState({
         id: null,
-        jogo_id:'',
-        biblioteca_id:'',
+        jogo_id: '',
+        biblioteca_id: '',
     });
 
-    // Função do tipo Anônima
     const onSubmit = (e) => {
         e.preventDefault();
         axiosClient.post(`/jogonabiblioteca/store`, jogonabiblioteca)
             .then(() => {
-                setJogoNaBiblioteca({});
-                console.log('Análise incluída com sucesso');
+                setJogoNaBiblioteca({
+                    id: null,
+                    jogo_id: '',
+                    biblioteca_id: '',
+                });
+                console.log('Conexão entre Jogo e Biblioteca criada com sucesso');
                 navigate('/jogonabiblioteca/index')
             }).catch((error) => {
                 console.log(error);
             })
     }
 
-    const onCancel = (e) => {
-        navigate('/jogonabiblioteca/index');
-    }
-
-
-
     return (
         <Fragment>
-            <div className="display">
-                <div className="card animated fadeinDown">
-                    <h1>Inclusão de Conexão entre Jogo e Biblioteca</h1>
+            <form className="form-store" onSubmit={onSubmit}>
+                <div className="form-title">Inclusão de Conexão entre Jogo e Biblioteca</div>
 
-                    <form onSubmit={(e) => onSubmit(e)}>
-                        <input
-                            type="text"
-                            value={jogonabiblioteca.biblioteca_id}
-                            placeholder="Id da Biblioteca"
-                            onChange={
-                                e => setJogoNaBiblioteca({
-                                    ...jogonabiblioteca, biblioteca_id: e.target.value
-                                })
-                            }
-                        />
-                        <input
-                            type="text"
-                            value={jogonabiblioteca.jogo_id}
-                            placeholder="Id do Jogo"
-                            onChange={
-                                e => setJogoNaBiblioteca({
-                                    ...jogonabiblioteca, jogo_id: e.target.value
-                                })
-                            }
-                        />
-                        <br />
-                        <br />
-                        <button
-                            className="btn btn-edit">
-                            Salvar
-                        </button>
-                        <Link
-                            type='button'
-                            className='btn btn-cancel'
-                            to='/jogonabiblioteca/index'>
-                            Cancelar
-                        </Link>
-                    </form>
+                <label>ID da Biblioteca</label>
+                <input
+                    type="text"
+                    value={jogonabiblioteca.biblioteca_id}
+                    onChange={e => setJogoNaBiblioteca({ ...jogonabiblioteca, biblioteca_id: e.target.value })}
+                    required
+                />
+
+                <label>ID do Jogo</label>
+                <input
+                    type="text"
+                    value={jogonabiblioteca.jogo_id}
+                    onChange={e => setJogoNaBiblioteca({ ...jogonabiblioteca, jogo_id: e.target.value })}
+                    required
+                />
+
+                <div className="form-store-actions">
+                    <button className="btn-save" type="submit">Salvar</button>
+                    <Link className="btn-cancel" to="/jogonabiblioteca/index">Cancelar</Link>
                 </div>
-            </div>
+            </form>
         </Fragment>
     )
 }
