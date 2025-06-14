@@ -73,8 +73,8 @@ const Rotas = () => {
       <Route path="/register" element={<Signup />} />
       <Route path="/forgot-password" element={<ForgotPassword />} />
       <Route path="/update-password" element={<UpdatePassword />} />
-      
-      
+
+
       <Route element={<Layout />}>
         <Route path="/dashboard" element={<Dashboard />} />
         {/* usuarios */}
@@ -92,13 +92,13 @@ const Rotas = () => {
         <Route path="/generodojogo/destroy/:id" element={<GeneroDoJogoFormDestroy />} />
 
         {/* avaliacoes */}
-          <Route path="/avaliacao/index" element={<AvaliacaoFormList />} />
-          <Route path="/avaliacao/store" element={<AvaliacaoFormStore />} />
-          <Route path="/avaliacao/update/:id" element={<AvaliacaoFormUpdate />} />
-          <Route path="/avaliacao/show/:id" element={<AvaliacaoFormShow />} />
-          <Route path="/avaliacao/destroy/:id" element={<AvaliacaoFormDestroy />} />
+        <Route path="/avaliacao/index" element={<AvaliacaoFormList />} />
+        <Route path="/avaliacao/store" element={<AvaliacaoFormStore />} />
+        <Route path="/avaliacao/update/:id" element={<AvaliacaoFormUpdate />} />
+        <Route path="/avaliacao/show/:id" element={<AvaliacaoFormShow />} />
+        <Route path="/avaliacao/destroy/:id" element={<AvaliacaoFormDestroy />} />
 
-          {/* biblioteca */}
+        {/* biblioteca */}
         <Route path="/biblioteca/index" element={<BibliotecaFormList />} />
         <Route path="/biblioteca/store" element={<BibliotecaFormStore />} />
         <Route path="/biblioteca/update/:id" element={<BibliotecaFormUpdate />} />
