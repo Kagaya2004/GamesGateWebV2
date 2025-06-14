@@ -1,7 +1,7 @@
 import React from 'react'
 import { Routes, Route } from 'react-router-dom'
 
-import Login from '../views/Login/Login'
+import Login from '../views/login/Login'
 import Signup from '../views/Login/Signup'
 import ForgotPassword from '../views/Login/ForgotPassword'
 import UpdatePassword from '../views/Login/UpdatePassword'
@@ -73,9 +73,10 @@ const Rotas = () => {
       <Route path="/register" element={<Signup />} />
       <Route path="/forgot-password" element={<ForgotPassword />} />
       <Route path="/update-password" element={<UpdatePassword />} />
-      <Route path="/dashboard" element={<Dashboard />} />
+      
       
       <Route element={<Layout />}>
+        <Route path="/dashboard" element={<Dashboard />} />
         {/* usuarios */}
         <Route path="/user/index" element={<UserFormList />} />
         <Route path="/user/store" element={<UserFormStore />} />

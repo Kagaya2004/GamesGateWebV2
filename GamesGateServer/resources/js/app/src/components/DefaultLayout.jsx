@@ -6,7 +6,7 @@ import axiosClient from '../axiosClient';
 export default function DefaultLayout({children})
 {
     // Verificar se o Usuário está logado
-    const {token, _setUser, _setToken, user} = useLogin();
+    const {token, _setUser, _setToken, user} = useLogin('');
     const navigate = useNavigate();
     
     if (!token){
