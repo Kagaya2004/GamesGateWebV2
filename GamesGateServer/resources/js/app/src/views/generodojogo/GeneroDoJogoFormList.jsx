@@ -4,7 +4,7 @@ import { data, Link } from 'react-router-dom';
 
 function GeneroDoJogoFormList() {
 
-  const [generoDoJogos, setGeneroDoJogos] = React.useState([]);
+  const [generoDoJogos, setGeneroDoJogos] = useState(['']);
   //const {page, pageSize} = generodojogoParams();
 
   const getGeneroDoJogos = () => {
@@ -32,7 +32,7 @@ function GeneroDoJogoFormList() {
           alignItems: 'center', 
         }}>
 
-          <h1>Lista de GeneroDoJogos</h1>
+          <h1>Lista de Conexões entre Gênero e Jogo</h1>
           <Link to="/generodojogo/store" className='btn-add'>Store</Link>
         </div>
         <table>
@@ -48,8 +48,8 @@ function GeneroDoJogoFormList() {
 
           <tbody>
             {
-              generodojogos.length > 0 ? (
-                generodojogos.map((generodojogo, index) => (
+              generoDoJogos.length > 0 ? (
+                generoDoJogos.map((generodojogo, index) => (
                   <tr key={index}>
 
                     <td>{generodojogo.id}</td>
