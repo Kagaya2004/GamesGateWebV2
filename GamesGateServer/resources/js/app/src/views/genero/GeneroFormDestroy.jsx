@@ -7,7 +7,7 @@ function GeneroFormDestroy() {
   const navigate = useNavigate();
   const [genero, setGenero] = useState({
     id: null,
-    name: '',
+    nome: '',
     descricao: ''
   })
   const { id } = useParams();

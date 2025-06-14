@@ -7,8 +7,8 @@ function DesenvolvedoraFormDestroy() {
   const navigate = useNavigate();
   const [desenvolvedora, setDesenvolvedora] = useState({
     id: null,
-    name: '',
-    desenvolvedoraname: '',
+    nome: '',
+    desenvolvedoraNome: '',
     email: ''
   })
   const { id } = useParams();

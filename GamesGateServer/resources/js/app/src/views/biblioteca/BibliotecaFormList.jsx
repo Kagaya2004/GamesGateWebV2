@@ -41,6 +41,7 @@ function BibliotecaFormList() {
             <tr>
               <th>ID</th>
               <th>ID do Usuário</th>
+              <th>Quantidade de Jogos</th>
               <th className='center actions' colSpan={3}>Ações</th>
             </tr>
           </thead>
@@ -54,6 +55,8 @@ function BibliotecaFormList() {
                     <td>{biblioteca.id}</td>
 
                     <td>{biblioteca.user_id}</td>
+
+                    <td>{biblioteca.quantidadeJogos}</td>
 
                     <td className='center actions'>
                       <Link to={`/biblioteca/update/${biblioteca.id}`} className='btn-edit'>Update</Link>

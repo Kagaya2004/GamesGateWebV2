@@ -7,11 +7,12 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
-    use HasFactory, Notifiable, SoftDeletes;
+    use HasFactory, Notifiable, SoftDeletes, HasApiTokens;
 
     // Conexões com outros modelos
     public function Biblioteca()
@@ -45,7 +46,7 @@ class User extends Authenticatable
      */
     protected $hidden = [
         'email_verified_at',
-        'password',
+        'senha',
         'remember_token',
         'last_login',
         'updated_at',

@@ -2,23 +2,21 @@ import { useState, Fragment, useEffect } from 'react'
 import axiosClient from '../../axiosClient'
 import { Link, useNavigate, useParams } from 'react-router-dom';
 
-function AnaliseFormDestroy() {
+function GeneroDoJogoFormDestroy() {
 
   const navigate = useNavigate();
-  const [analise, setAnalise] = useState({
+  const [generoDoJogo, setGeneroDoJogo] = useState({
     id: null,
-    titulo: '',
-    curtidas:'',
-    user_id:'',
-    jogo_id:'',
+    jogo_id: '',
+    genero_id: '',
   })
   const { id } = useParams();
   
   if (id){
     useEffect(() => {
-      axiosClient.get(`/analise/show/${id}`)
+      axiosClient.get(`/generodojogo/show/${id}`)
         .then(({data}) => {
-          setAnalise(data.data);
+          setGeneroDoJogo(data.data);
         }).catch((error) => {
           console.log(error);
         })
@@ -27,27 +25,26 @@ function AnaliseFormDestroy() {
 
     const OnSubmit = (e) => {
       e.preventDefault();
-      axiosClient.delete(`/analise/destroy/${id}`)
+      axiosClient.delete(`/generodojogo/destroy/${id}`)
         .then(() => {
-          setAnalise({});
-          navigate('/analise/index');
+          setGeneroDoJogo({});
+          navigate('/generodojogo/index');
         }).catch((error) => {
           console.log(error);
         })
     }
     const OnCancel = () => {
-      navigate('/analise/index');
+      navigate('/generodojogo/index');
     }
 
   return (
     <Fragment>
       <div className='display'>
         <div className='card animated fadeInDown'>
-          {analise.id && <h1>Exclusão da Análise: {analise.id}  </h1>}
-          {analise.id && <h1>Título da Análise: {analise.titulo}  </h1>}
-          {analise.id && <h2>Número de Curtidas: {analise.curtidas}  </h2>}
-          {analise.id && <h2>Id do Usuário: {analise.user_id}  </h2>}
-          {analise.id && <h2>Id do Jogo: {analise.user_id}  </h2>}
+          {generodojogo.id && <h1>Exclusão da Conexão entre Gênero e Jogo: {generoDoJogo.id}  </h1>}
+          {generodojogo.id && <h1>Gênero: {generodojogo.genero_id}  </h1>}
+          {generodojogo.id && <h2>Jogo: {generodojogo.jogo_id}  </h2>}
+
         </div>
 
         <form onSubmit={(e)=>OnSubmit(e)}>
@@ -58,7 +55,7 @@ function AnaliseFormDestroy() {
           <Link 
             type='button'
             className='btn btn-cancel'
-            to='/analise/index'>
+            to='/generodojogo/index'>
               Cancelar
           </Link>
         </form>
@@ -67,4 +64,4 @@ function AnaliseFormDestroy() {
   )
 }
 
-export default AnaliseFormDestroy
+export default GeneroDoJogoFormDestroy

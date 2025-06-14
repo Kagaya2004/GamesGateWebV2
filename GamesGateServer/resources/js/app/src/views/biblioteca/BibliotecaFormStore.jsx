@@ -8,6 +8,7 @@ function BibliotecaFormStore() {
     const [biblioteca, setBiblioteca] = useState({
         id: null,
         user_id: '',
+        quantidadeJogos: ''
     });
 
     // Função do tipo Anônima
@@ -43,6 +44,16 @@ function BibliotecaFormStore() {
                             onChange={
                                 e => setBiblioteca({
                                     ...biblioteca, user_id: e.target.value
+                                })
+                            }
+                        />
+                        <input
+                            type="text"
+                            value={biblioteca.user_id}
+                            placeholder="Quantidade de Jogos"
+                            onChange={
+                                e => setBiblioteca({
+                                    ...biblioteca, quantidadeJogos: e.target.value
                                 })
                             }
                         />

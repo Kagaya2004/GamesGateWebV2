@@ -99,7 +99,6 @@ class UserController extends Controller
             ],404);
         }
 
-        
         $data->nome = $request->nome ?? $data->nome;
         $data->email = $request->email ?? $data->email;
         $data->apelido = $request->apelido ?? $data->apelido;

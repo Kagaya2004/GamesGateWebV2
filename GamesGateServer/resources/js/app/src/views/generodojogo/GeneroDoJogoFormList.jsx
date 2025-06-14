@@ -2,15 +2,15 @@ import React, { useEffect, useState } from 'react'
 import axiosClient from '../../axiosClient';
 import { data, Link } from 'react-router-dom';
 
-function AnaliseFormList() {
+function GeneroDoJogoFormList() {
 
-  const [analises, setAnalises] = React.useState([]);
-  //const {page, pageSize} = analiseParams();
+  const [generoDoJogos, setGeneroDoJogos] = React.useState([]);
+  //const {page, pageSize} = generodojogoParams();
 
-  const getAnalises = () => {
-    axiosClient.get(`/analise/index?page{}`)
+  const getGeneroDoJogos = () => {
+    axiosClient.get(`/generodojogo/index?page{}`)
               .then(({data}) => {
-                setAnalises(data.data);
+                setGeneroDoJogos(data.data);
               }
               ).catch((error) => {
                 console.log(error);
@@ -18,7 +18,7 @@ function AnaliseFormList() {
   }
 
   useEffect(() => {
-    getAnalises();
+    getGeneroDoJogos();
   }, []);
 
 
@@ -32,48 +32,42 @@ function AnaliseFormList() {
           alignItems: 'center', 
         }}>
 
-          <h1>Lista de Analises</h1>
-          <Link to="/analise/store" className='btn-add'>Store</Link>
+          <h1>Lista de GeneroDoJogos</h1>
+          <Link to="/generodojogo/store" className='btn-add'>Store</Link>
         </div>
         <table>
           
           <thead>
             <tr>
               <th>ID</th>
-              <th>Título</th>
-              <th>Curtidas</th>
-              <th>ID do Usuário</th>
-              <th>ID do Jogo</th>
+              <th>Gênero</th>
+              <th>Jogo</th>
               <th className='center actions' colSpan={3}>Ações</th>
             </tr>
           </thead>
 
           <tbody>
             {
-              analises.length > 0 ? (
-                analises.map((analise, index) => (
+              generodojogos.length > 0 ? (
+                generodojogos.map((generodojogo, index) => (
                   <tr key={index}>
 
-                    <td>{analise.id}</td>
+                    <td>{generodojogo.id}</td>
 
-                    <td>{analise.titulo}</td>
+                    <td>{generodojogo.genero_id}</td>
 
-                    <td>{analise.curtidas}</td>
-
-                    <td>{analise.user_id}</td>
-
-                    <td>{analise.jogo_id}</td>
+                    <td>{generodojogo.jogo_id}</td>
 
                     <td className='center actions'>
-                      <Link to={`/analise/update/${analise.id}`} className='btn-edit'>Update</Link>
+                      <Link to={`/generodojogo/update/${generodojogo.id}`} className='btn-edit'>Update</Link>
                     </td>
 
                     <td className='center actions'>
-                      <Link to={`/analise/destroy/${analise.id}`} className='btn-delete'>Destroy</Link>
+                      <Link to={`/generodojogo/destroy/${generodojogo.id}`} className='btn-delete'>Destroy</Link>
                     </td>
                   
                     <td className='center actions'>
-                      <Link to={`/analise/show/${analise.id}`} className='btn-show'>Show</Link>
+                      <Link to={`/generodojogo/show/${generodojogo.id}`} className='btn-show'>Show</Link>
                     </td>
 
                   </tr>
@@ -91,4 +85,4 @@ function AnaliseFormList() {
   )
 }
 
-export default AnaliseFormList
+export default GeneroDoJogoFormList

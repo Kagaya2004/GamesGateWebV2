@@ -5,12 +5,11 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
-use App\Models\Desenvolvedora;
 use Illuminate\Support\Facades\Hash;
 
 class LoginController extends Controller
 {
-    public function loginUsuario(Request $request){
+    public function login(Request $request){
         $email = $request->email;
         $password = $request->password;
         $user = User::where('email', $email )->first();
@@ -21,42 +20,27 @@ class LoginController extends Controller
             ]);
         }
 
-        if (!Hash::check($password, $user->password)){
+        if (!Hash::check($password, $user->senha)){
             return response()->json([
                 'message'=>'Senha do usuário inválida',
             ]);
         }
 
-        $token = $user->createToken($user->name)->plainTextToken();
+        $token = $user->createToken($user->nome)->plainTextToken;
 
         return response()->json([
-            'email'=>$email,
+            'user'=>$user,
             'token'=>$token,
         ]);
     }
 
-    public function loginDesenvolvedora(Request $request){
+    public function logout(Request $request){
         $email = $request->email;
-        $password = $request->password;
         $user = User::where('email', $email )->first();
-
-        if (!$user){
-            return response()->json([
-                'message'=>'Email não encontrado',
-            ]);
-        }
-
-        if (!Hash::check($password, $user->password)){
-            return response()->json([
-                'message'=>'Senha do usuário inválida',
-            ]);
-        }
-
-        $token = $user->createToken($user->name)->plainTextToken();
+        $user->tokens()->delete();
 
         return response()->json([
-            'email'=>$email,
-            'token'=>$token,
-        ]);
+            'message'=>'Logout realizado com sucesso!',
+        ], 204);
     }
 }

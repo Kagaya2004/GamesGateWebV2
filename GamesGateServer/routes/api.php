@@ -19,8 +19,7 @@ Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
 
-Route::post('/loginUsuario', [LoginController::class, 'loginUsuario']);
-Route::post('/loginDesenvolvedora', [LoginController::class, 'loginDesenvolvedora']);
+Route::post('/login', [LoginController::class, 'login']);
 
 Route::prefix('analise')->group(function () {
     Route::get('/index', [AnaliseController::class, 'index']);

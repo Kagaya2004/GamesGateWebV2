@@ -7,9 +7,10 @@ function JogoFormDestroy() {
   const navigate = useNavigate();
   const [jogo, setJogo] = useState({
     id: null,
-    name: '',
-    username: '',
-    email: ''
+    nome: '',
+    descricao: '',
+    dataLancamento: new Date().toISOString().split('T')[0],
+    desenvolvedora_id: '',
   })
   const { id } = useParams();
   
@@ -45,6 +46,7 @@ function JogoFormDestroy() {
           {jogo.id && <h1>Exclusão do Jogo: {jogo.nome}  </h1>}
           {jogo.id && <h2>Nome do Jogo: {jogo.nome}  </h2>}
           {jogo.id && <h2>Data de Lançamento: {jogo.dataLancamento}  </h2>}
+          {jogo.id && <h2>Desenvolvedora: {jogo.desenvolvedora_id}</h2>}
         </div>
 
         <form onSubmit={(e)=>OnSubmit(e)}>

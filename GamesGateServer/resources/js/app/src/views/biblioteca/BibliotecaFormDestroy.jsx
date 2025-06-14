@@ -7,7 +7,7 @@ function BibliotecaFormDestroy() {
   const navigate = useNavigate();
   const [biblioteca, setBiblioteca] = useState({
     id: null,
-    name: '',
+    quantidadeJogos: '',
     user_id:'',
   })
   const { id } = useParams();

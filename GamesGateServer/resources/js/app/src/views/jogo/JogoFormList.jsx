@@ -43,6 +43,7 @@ function JogoFormList() {
               <th>Nome</th>
               <th>Data de Lançamento</th>
               <th>Descrição</th>
+              <th>Desenvolvedora</th>
               <th className='center actions' colSpan={3}>Ações</th>
             </tr>
           </thead>
@@ -60,6 +61,8 @@ function JogoFormList() {
                     <td>{jogo.dataLancamento}</td>
 
                     <td>{jogo.descricao}</td>
+                    
+                    <td>{jogo.desenvolvedora_id}</td>
 
                     <td className='center actions'>
                       <Link to={`/jogo/update/${jogo.id}`} className='btn-edit'>Update</Link>

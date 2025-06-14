@@ -8,6 +8,7 @@ function BibliotecaFormUpdate() {
   const [biblioteca, setBiblioteca] = useState({
       id: null,
       user_id: '',
+      quantidadeJogos: '',
   });
 
   const { id } = useParams();
@@ -42,17 +43,28 @@ function BibliotecaFormUpdate() {
         <div className='card animated fadeInDown'>
           {biblioteca.id && <h1>Atualização de Biblioteca: {biblioteca.id}  </h1>}
           {biblioteca.id && <h2>Id do Usuário: {biblioteca.user_id}  </h2>}
+          {biblioteca.id && <h2>Quantidade de Jogos: {biblioteca.quantidadeJogos}  </h2>}
         </div>
 
         <form onSubmit={(e)=>OnSubmit(e)}>
 
           <input
               type="text"
-              value={biblioteca.nome}
+              value={biblioteca.user_id}
               placeholder="ID do Usuário"
               onChange={
                   e => setBiblioteca({
                       ...biblioteca, user_id: e.target.value
+                  })
+              }
+          />
+          <input
+              type="text"
+              value={biblioteca.quantidadeJogos}
+              placeholder="Quantidade de Jogos"
+              onChange={
+                  e => setBiblioteca({
+                      ...biblioteca, quantidadeJogos: e.target.value
                   })
               }
           />

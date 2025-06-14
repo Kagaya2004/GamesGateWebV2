@@ -10,6 +10,7 @@ function JogoFormStore() {
         nome: '',
         dataLancamento: new Date().toISOString().split('T')[0],
         descricao: '',
+
     });
 
     // Função do tipo Anônima
@@ -65,6 +66,16 @@ function JogoFormStore() {
                             onChange={
                                 e => setJogo({
                                     ...jogo, descricao: e.target.value
+                                })
+                            }
+                        />
+                        <input
+                            type="text"
+                            value={jogo.desenvolvedora_id}
+                            placeholder="Desenvolvedora"
+                            onChange={
+                                e => setJogo({
+                                    ...jogo, desenvolvedora_id: e.target.value
                                 })
                             }
                         />
