@@ -32,7 +32,7 @@ function AnaliseFormList() {
           alignItems: 'center', 
         }}>
 
-          <h1>Lista de Analises</h1>
+          <h1>Lista de Análises</h1>
           <Link to="/analise/store" className='btn-add'>Store</Link>
         </div>
         <table>

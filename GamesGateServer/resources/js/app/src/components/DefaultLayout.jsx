@@ -43,8 +43,12 @@ export default function DefaultLayout({children})
         </aside>
         <div className='content'>
             <header>
-                <div>
-                    Biblioteca de Jogos
+                <div className="game-library-title">
+                  <span role="img" aria-label="game">🎮</span>
+                  Biblioteca de Jogos
+                </div>
+                <div className="game-library-subtitle">
+                  Sua coleção de jogos e análises em um só lugar!
                 </div>
                 <div>
                     {/* Espaço em Branco = &nbsp; */}

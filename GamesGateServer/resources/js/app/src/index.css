@@ -131,16 +131,27 @@ body {
 }
 
 .btn-logout {
-    text-decoration: none;
-    padding: 0.75rem 1.5rem;
-    color:#212121;
-    transition: all 0.3s;
+    background: #fff;
+    color: #0cb634;
+    font-weight: 700;
+    border: none;
+    padding: 10px 28px;
     border-radius: 6px;
-
+    font-size: 1rem;
+    margin-right: 24px;
+    transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+    box-shadow: 0 1px 4px rgba(44, 62, 80, 0.06);
+    cursor: pointer;
+    outline: none;
+    text-decoration: none;
+    display: inline-block;
 }
 
-.btn-logout:hover{
-    background-color: rgba(0,0,0,0.1);
+.btn-logout:hover,
+.btn-logout:focus {
+    background: #0cb634;
+    color: #fff;
+    box-shadow: 0 2px 8px rgba(44, 62, 80, 0.10);
 }
 
 .btn:hover,
@@ -156,84 +167,119 @@ body {
 
 table {
     width: 100%;
-    border-collapse: collapse;
-    border-radius: 8px;
+    border-collapse: separate;
+    border-spacing: 0;
+    border-radius: 12px;
     overflow: hidden;
+    background: #fff;
+    box-shadow: 0 2px 12px rgba(44, 62, 80, 0.07);
+    margin-top: 18px;
+}
+
+/* Separação entre colunas da tabela */
+th:not(:last-child),
+td:not(:last-child) {
+    border-right: 1px solid #e0e0e0;
 }
 
 /* Cabeçalho verde apenas no thead */
 thead th {
-  background: #137a13; /* verde escuro */
-  color: #fff;
-  padding: 10px 8px;
-  text-align: left;
+    background: #28a745;
+    color: #fff;
+    padding: 14px 10px;
+    font-size: 1.08rem;
+    font-weight: 700;
+    border: none;
+    letter-spacing: 0.02em;
 }
 
 /* Remove fundo verde de outros elementos */
 tbody td {
-  background: #fff;
-  color: #222;
-  padding: 8px;
-  border-bottom: 1px solid #eee;
+    background: #fff;
+    color: #222;
+    padding: 12px 10px;
+    border-bottom: 1px solid #f0f0f0;
+    font-size: 1rem;
+    vertical-align: middle;
 }
 
 th, td {
-  padding: 10px;
-  border-bottom: 1px solid #ddd;
-  border-right: 1px solid #ddd;
-  border-top: 1px solid #ddd;
-  text-align: left;
+    border: none;
+    text-align: center;
 }
 
 tbody tr:hover {
-    background-color: #c9c1c1;
-}
-
-table > thead > tr > th {
-    text-align: left;
-    padding: 0.5rem 0.5rem;
-    background-color: #0a7a0e;
-    color: white;
-
-}
-
-table > thead > tr > th.center {
-    padding: 0.5rem 0.5rem;
-    border-bottom: 1px solid #efefef;
-    text-align: center;
-    vertical-align: middle;
-}
-
-table > thead > tr > td.center {
-    padding: 0.5rem 0.5rem;
-    border-bottom: 1px solid #efefef;
-    text-align: center;
-    vertical-align: middle;
+    background-color: #f4f9f9;
+    transition: background 0.2s;
 }
 
 th.actions, td.actions {
     width: 1%;
     white-space: nowrap; /* impedir que o botão quebre a linha*/
     text-align: center;
-    min-height: 100vh;
+    vertical-align: middle;
 }
 
-.display {
-    display: flex;
-    justify-content: center;
-    padding: 20px;
+/* Botões de ação aprimorados */
+.btn-edit, .btn-delete, .btn-show {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    border: none;
+    padding: 8px 16px;
+    font-size: 0.98rem;
+    font-weight: 600;
+    border-radius: 6px;
+    transition: background 0.18s, box-shadow 0.18s;
+    box-shadow: 0 1px 4px rgba(44, 62, 80, 0.06);
 }
 
-.card {
-    width: 70%;
-    max-width: 100%;
-    min-height: 30%;
-    background-color: #fff;
-    border-radius: 0.5rem;
-    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1 );
-    padding: 1.25rem 1.5rem;
-    margin-bottom: 1rem;
-    margin-top: 0.5rem;
+.btn-edit {
+    background: #4ecca3;
+    color: #fff;
+}
+.btn-edit:hover {
+    background: #3aafa9;
+}
+
+.btn-delete {
+    background: #f67280;
+    color: #fff;
+}
+.btn-delete:hover {
+    background: #c94f60;
+}
+
+.btn-show {
+    background: #393e46;
+    color: #fff;
+}
+.btn-show:hover {
+    background: #222831;
+}
+
+/* Botão Store */
+.btn-add {
+    background: #3aafa9;
+    color: #fff;
+    font-weight: 700;
+    padding: 10px 22px;
+    border-radius: 6px;
+    font-size: 1rem;
+    box-shadow: 0 1px 4px rgba(44, 62, 80, 0.06);
+    transition: background 0.18s;
+}
+.btn-add:hover {
+    background: #2b7a78;
+}
+
+/* título da lista */
+.card h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #222;
+    margin-bottom: 18px;
+    letter-spacing: 0.01em;
 }
 
 /* estilo para login, update password, register, forgot password */
@@ -483,6 +529,25 @@ th.actions, td.actions {
 
 .form-store .btn-cancel:hover {
   background: #0e8e8e;
+}
+
+/* Destaque para o título Biblioteca de Jogos */
+.game-library-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 2rem;
+  font-weight: 800;
+  color: #fff;
+  padding: 18px 32px;
+  border-radius: 10px 10px 0 0;
+  letter-spacing: 0.02em;
+}
+
+.game-library-subtitle {
+  font-size: 1.1rem;
+  color: #ffffff;
+  margin-left: 44px;
 }
 
 @media (max-width: 600px) {
