@@ -1,67 +1,62 @@
-import { useState, Fragment, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import axiosClient from '../../axiosClient'
 import { useNavigate, useParams } from 'react-router-dom';
 
 function UserFormShow() {
-
   const navigate = useNavigate();
-  const [user, setUser] = useState([]);
-
+  const [user, setUser] = useState({});
   const { id } = useParams();
 
-  if (id) {
-    useEffect(() => {
+  useEffect(() => {
+    if (id) {
       axiosClient.get(`/user/show/${id}`)
         .then(({ data }) => {
           setUser(data.data);
         }).catch((error) => {
           console.log(error);
         })
-    }, [id]);
-  }
-
-  const OnSubmit = (e) => {
-    e.preventDefault();
-    navigate('/user/index');
-  }
+    }
+  }, [id]);
 
   return (
-    <Fragment>
-      <div className='display'>
-        <div className='card animated fadeInDown'>
-          {user.id && <h1>Consulta do Usuário: {user.apelido}</h1>}
-
-          <br />
-          <div className='info'>
-            {user.id && <h2>Id do usuário: {user.id}</h2>}
-            {user.id && <h2>Nome Completo: {user.nome}</h2>}
-            {user.id && <h2>Nome de Usuário: {user.apelido}</h2>}
-            {user.id && <h2>Email: {user.email}</h2>}
-            {user.id && <h2>Data de Nascimento: {user.dataNascimento}</h2>}
-            {user.id && <h2>Descricao: {user.descricao}</h2>}
-            {user.id && <h2>Status: {user.status}</h2>}
-          </div>
-
-          <button
-            className='btn'
-            onClick={(e) => OnSubmit(e)}>
-            Voltar
-          </button>
-        </div>
-
-        {/*
-        }
-        <form>
-          <input defaultValue={user.name} placeholder='Nome do Usuário' readOnly={true}/>
-          <input defaultValue={user.email} placeholder='E-mail de Usuário' readOnly={true}/>
-          <button 
-            className='btn'
-            onClick={(e)=>OnSubmit(e)}>
-              Voltar</button>
-        </form>*/
-        }
+    <div className="form-show">
+      <div className="form-show-title">
+        {user.id && <>Consulta do Usuário: <span style={{color:'#5b08a7'}}>{user.apelido}</span></>}
       </div>
-    </Fragment>
+      <div className="form-show-info-list">
+        <div className="form-show-info-item">
+          <span className="form-show-info-label">ID:</span> {user.id}
+        </div>
+        <div className="form-show-info-item">
+          <span className="form-show-info-label">Nome Completo:</span> {user.nome}
+        </div>
+        <div className="form-show-info-item">
+          <span className="form-show-info-label">Nome de Usuário:</span> {user.apelido}
+        </div>
+        <div className="form-show-info-item">
+          <span className="form-show-info-label">Email:</span> {user.email}
+        </div>
+        <div className="form-show-info-item">
+          <span className="form-show-info-label">Data de Nascimento:</span> {user.dataNascimento}
+        </div>
+        <div className="form-show-info-item">
+          <span className="form-show-info-label">Descrição:</span> {user.descricao}
+        </div>
+        <div className="form-show-info-item">
+          <span className="form-show-info-label">Status:</span> {user.status}
+        </div>
+      </div>
+      <div className="form-show-actions">
+        <button
+          className="btn-cancel"
+          style={{ display: 'flex', alignItems: 'center', gap: '8px', fontWeight: 700, fontSize: '1rem' }}
+          onClick={() => navigate('/user/index')}
+        >
+          <span style={{ fontSize: '1.2em' }}>←</span>
+          Voltar
+        </button>
+      </div>
+    </div>
   )
 }
 

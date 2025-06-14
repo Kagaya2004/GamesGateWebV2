@@ -7,56 +7,52 @@ function UserFormDestroy() {
   const navigate = useNavigate();
   const [user, setUser] = useState({
     id: null,
-    name: '',
-    username: '',
+    nome: '',
+    apelido: '',
     email: ''
   })
   const { id } = useParams();
   
-  if (id){
-    useEffect(() => {
+  useEffect(() => {
+    if (id) {
       axiosClient.get(`/user/show/${id}`)
         .then(({data}) => {
           setUser(data.data);
         }).catch((error) => {
           console.log(error);
         })
-    }, [id]);
-  }
+    }
+  }, [id]);
 
-    const OnSubmit = (e) => {
-      e.preventDefault();
-      axiosClient.delete(`/user/destroy/${id}`)
-        .then(() => {
-          setUser({});
-          navigate('/user/index');
-        }).catch((error) => {
-          console.log(error);
-        })
-    }
-    const OnCancel = () => {
-      navigate('/user/index');
-    }
+  const OnSubmit = (e) => {
+    e.preventDefault();
+    axiosClient.delete(`/user/destroy/${id}`)
+      .then(() => {
+        setUser({});
+        navigate('/user/index');
+      }).catch((error) => {
+        console.log(error);
+      })
+  }
 
   return (
     <Fragment>
-      <div className='display'>
-        <div className='card animated fadeInDown'>
-          {user.id && <h1>Exclusão do usuário: {user.apelido}  </h1>}
-          {user.id && <h2>Nome de Usuário: {user.nome}  </h2>}
-          {user.id && <h2>Email: {user.email}  </h2>}
+      <div className="form-destroy">
+        <div className="form-title">
+          Exclusão do usuário: {user.apelido}
         </div>
-
-        <form onSubmit={(e)=>OnSubmit(e)}>
-          <button 
-            className='btn btn-delete'>
-              Excluir
+        <div className="form-info">
+          <strong>Nome de Usuário:</strong> {user.nome}
+        </div>
+        <div className="form-info">
+          <strong>Email:</strong> {user.email}
+        </div>
+        <form onSubmit={OnSubmit} className="form-destroy-actions">
+          <button className="btn-delete" type="submit">
+            Excluir
           </button>
-          <Link 
-            type='button'
-            className='btn btn-cancel'
-            to='/user/index'>
-              Cancelar
+          <Link className="btn-cancel" to="/user/index">
+            Cancelar
           </Link>
         </form>
       </div>
