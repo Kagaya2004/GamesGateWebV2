@@ -22,6 +22,7 @@ function DesenvolvedoraFormStore() {
                     id: null,
                     nome: '',
                     email: '',
+                    senha:'',
                     descricao: '',
                     pais: '',
                     site: '',
@@ -75,6 +76,14 @@ function DesenvolvedoraFormStore() {
                     type="text"
                     value={desenvolvedora.site}
                     onChange={e => setDesenvolvedora({ ...desenvolvedora, site: e.target.value })}
+                    required
+                />
+
+                <label>Senha</label>
+                <input
+                    type="password"
+                    value={desenvolvedora.password}
+                    onChange={e => setDesenvolvedora({ ...desenvolvedora, senha: e.target.value })}
                     required
                 />
 

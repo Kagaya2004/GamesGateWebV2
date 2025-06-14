@@ -24,21 +24,21 @@ const loginValidationRules  =  {
         return mensagens;
     },
 
-    password:(password)=>{
+    password: (senha = '') => {
         let mensagens = [];
 
-        if (!password || password.trim().length === 0 ) {
+        if (!senha || senha.trim().length === 0 ) {
             mensagens.push('Obrigatório informar a senha');
         }
 
-        if ( password.length < PASSWORD_LENGTH ){
+        if (senha.length < PASSWORD_LENGTH ){
             mensagens.push('A senha deve conter oito caracteres ')
         }
 
-        const hasNumber = [...password].some((char) => NUMBER.includes(char));
+        const hasNumber = [...senha].some((char) => NUMBER.includes(char));
 
         if (!hasNumber){
-        mensagens.push('A senha deve conter pelo menos um número');
+            mensagens.push('A senha deve conter pelo menos um número');
         }
 
         /* const hasLowerCase = [...password].some((char) => LOWERCASE.includes(char));

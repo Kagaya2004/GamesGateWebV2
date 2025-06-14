@@ -83,7 +83,7 @@ export default function Login() {
             <input type="password"
               placeholder='Senha'
               className={getInputClass(error.password)}
-              name="senha"
+              name="password"
               value={model.password}
               onChange={handleChangeField}
               onBlur={handleBlurField}
